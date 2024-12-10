@@ -1,6 +1,3 @@
-### Updated README.md:
-
-```markdown
 # Telegram Desktop in Docker
 
 ## Overview
@@ -69,4 +66,3 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 - Author: Anton Kirsanov (https://github.com/kvakirsanov)
-```
