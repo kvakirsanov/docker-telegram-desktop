@@ -11,7 +11,7 @@ terminate_previous_instances() {
 
 cleanup() {
     echo "Cleaning up..."
-    rm -f "$PIPE"
+    rm -f "$XDG_OPEN_HOOK_PIPE"
     exit 0
 }
 

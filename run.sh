@@ -7,6 +7,15 @@ set -euo pipefail
 # Load configuration
 source .config
 
+
+cleanup() {
+    echo "Cleaning up..."
+    rm -f "$XDG_OPEN_HOOK_PIPE"
+    exit 0
+}
+
+trap cleanup SIGINT SIGTERM EXIT
+
 # Directories that must exist
 DIRS=(
     "$HOME/.TelegramDesktop"
