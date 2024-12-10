@@ -1,19 +1,19 @@
 #!/bin/bash
 
-# Включение режима отладки и немедленного завершения при ошибке
+# Enable debugging mode and immediate exit on error
 set -euo pipefail
 #set -x
 
-# Загрузка конфигурации
+# Load configuration
 source .config
 
-# Директории, которые должны существовать
+# Directories that must exist
 DIRS=(
     "$HOME/.TelegramDesktop"
     "$HOME/Downloads/Telegram Desktop"
 )
 
-# Проверка и создание директорий, если их нет
+# Check and create directories if they do not exist
 for DIR in "${DIRS[@]}"; do
     if [ ! -d "$DIR" ]; then
         mkdir -p "$DIR"
@@ -21,23 +21,23 @@ for DIR in "${DIRS[@]}"; do
     fi
 done
 
-# Проверяем наличие версии Telegram
+# Check if the Telegram version file exists
 if [[ -f ".telegram_version" ]]; then
-    # Считываем версию из файла
+    # Read the version from the file
     VERSION=$(cat ".telegram_version")
 
-    # Запуск xdg-open хука
+    # Start the xdg-open hook
 #    bash -c "./scripts/xdg-open-hook.sh --host >> xdg-open-host.log 2>&1 &"
     bash -c "./scripts/xdg-open-hook.sh --host &"
     sleep 1
 
-    # Разрешаем доступ X-сессии для контейнера
+    # Allow X session access for the container
     xhost +local:docker
 
-    # Формируем имя контейнера
+    # Generate container name
     container_name="${TAG//\//_}-$VERSION"
 
-    # Запуск Docker-контейнера с Telegram
+    # Run the Docker container with Telegram
     docker run --rm -it --name "$container_name" \
         --user "$UID:1000" \
         -e DISPLAY="unix$DISPLAY" \
@@ -55,7 +55,7 @@ if [[ -f ".telegram_version" ]]; then
         -v "$HOME/Downloads/Telegram Desktop/:/home/user/Downloads/Telegram Desktop/" \
         "$TAG:$VERSION"
 else
-    # Сообщаем об ошибке, если файл с версией отсутствует
+    # Display an error if the version file is missing
     echo "ERROR: '.telegram_version' not found! Please run build.sh first."
     exit 1
 fi
