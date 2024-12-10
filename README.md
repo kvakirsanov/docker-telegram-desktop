@@ -57,6 +57,13 @@ This script ensures seamless integration with the host system while maintaining 
 - Docker (20.x or higher).
 - X11 or Wayland support for graphical output.
 
+### TODO
+- **Isolate X Server**: Implement X server isolation using tools like [x11docker](https://github.com/mviereck/x11docker).
+- **Replace `xhost`**: Use more secure alternatives, such as `xhost +si:localuser:$(whoami)` or virtual X servers like `Xvfb`.
+- **Add Wayland Support**: Explore Wayland as a modern and secure alternative to X11.
+- **Limit Docker Privileges**: Audit and restrict container permissions for enhanced security.
+- **Automate Setup**: Create scripts for seamless integration with x11docker or other isolation tools.
+
 ---
 
 ## License
