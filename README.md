@@ -34,8 +34,8 @@ cd telegram-desktop-docker
 
 ---
 
-## About `telegram.sh`
-The `telegram.sh` script manages the lifecycle of the Telegram Desktop application. It:
+## About `scripts/telegram.sh`
+The `telegram.sh` script manages the lifecycle of the Telegram Desktop application inside Docker container. It:
 
 - **Launches Telegram Desktop**: Starts the application and tracks its process ID (PID).
 - **Monitors the Application**: Continuously checks if the Telegram window remains open using `wmctrl`.
@@ -43,7 +43,7 @@ The `telegram.sh` script manages the lifecycle of the Telegram Desktop applicati
 
 This script ensures a clean and controlled execution of Telegram Desktop, making it ideal for containerized environments.
 
-## About `xdg-open-hook.sh`
+## About `scripts/xdg-open-hook.sh`
 The `xdg-open-hook.sh` script ensures safe handling of `xdg-open` calls made by Telegram Desktop in the container. It:
 - Validates and forwards URL requests to the host system’s browser.
 - Logs or rejects unsafe or unsupported file and link requests.
