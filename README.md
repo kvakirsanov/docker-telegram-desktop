@@ -18,8 +18,8 @@ This project allows running **Telegram Desktop** inside a Docker container to en
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/telegram-desktop-docker.git
-cd telegram-desktop-docker
+git clone https://github.com/kvakirsanov/docker-telegram-desktop.git
+cd docker-telegram-desktop
 ```
 
 ### 2. Build the Docker Image
