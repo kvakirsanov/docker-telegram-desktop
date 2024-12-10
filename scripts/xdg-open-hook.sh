@@ -36,7 +36,7 @@ start_pipe_listener() {
                 echo "VALID FILE: $url"
 
                 filename=$(basename "$url")
-                xdg-open "file://${home}/Downloads/Telegram Desktop/${filename}"
+                xdg-open "file://${HOME}/Downloads/Telegram Desktop/${filename}"
 
             else
                 echo "ERROR: Invalid or disallowed URL '$url'"
