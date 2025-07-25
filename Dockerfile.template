@@ -1,15 +1,15 @@
 # Telegram Desktop version: ${TELEGRAM_VERSION}
 
 # Gathering of binary
-FROM debian:bookworm-slim as downloader
+FROM debian:bookworm-slim AS downloader
 
 ARG telegram_version="${TELEGRAM_VERSION}"
 ARG http_proxy=""
 ARG https_proxy=""
 ARG apt_sources="http://deb.debian.org"
 
-ENV LANG C.UTF-8
-ENV LC_ALL C.UTF-8
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
 
 RUN sed -i "s@http://deb.debian.org@$apt_sources@g" /etc/apt/sources.list.d/debian.sources && \
     apt-get update && apt-get install -y \
@@ -35,17 +35,15 @@ RUN env \
 
 # Base docker image
 FROM debian:bookworm
-LABEL maintainer "Christophe Boucharlat <christophe.boucharlat@gmail.com>"
-LABEL org.opencontainers.image.source https://github.com/xorilog/docker-telegram
 
 # Make a user
-ENV HOME /home/user
+ENV HOME=/home/user
 RUN useradd --uid 1000 --create-home --home-dir $HOME user \
 	&& chown -R user:user $HOME \
 	&& usermod -a -G audio,video user
 
-ENV LANG C.UTF-8
-ENV LC_ALL C.UTF-8
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
 
 ARG http_proxy=""
 ARG https_proxy=""
@@ -70,6 +68,7 @@ RUN sed -i "s@http://deb.debian.org@$apt_sources@g" /etc/apt/sources.list.d/debi
     libsm6 \
     libegl1-mesa-dev \
     libgl1-mesa-glx \
+    libwebkit2gtk-4.1-0 libwebkit2gtk-4.1-dev webkit2gtk-driver \
     --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
