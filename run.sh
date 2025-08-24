@@ -47,7 +47,7 @@ if [[ -f ".telegram_version" ]]; then
     container_name="${TAG//\//_}-$VERSION"
 
     # Run the Docker container with Telegram
-    docker run --rm -it --name "$container_name" \
+    docker run --rm --platform linux/amd64 -it --name "$container_name" \
         --user "$UID:1000" \
         -e DISPLAY="unix$DISPLAY" \
         -e XDG_OPEN_HOOK_PIPE="$XDG_OPEN_HOOK_PIPE" \
@@ -57,6 +57,8 @@ if [[ -f ".telegram_version" ]]; then
         -v "$XDG_RUNTIME_DIR/pulse:$XDG_RUNTIME_DIR/pulse" \
         -v "$PWD/scripts/xdg-open-hook.sh:/bin/x-www-browser" \
         -v "$PWD/.config:/home/user/.config" \
+        -v "$PWD/.cache:/home/user/.cache" \
+        -v "$PWD/.local:/home/user/.local" \
         -v "$PWD/scripts/telegram.sh:/home/user/telegram.sh" \
         -v "$XDG_OPEN_HOOK_PIPE:$XDG_OPEN_HOOK_PIPE" \
         -v /etc/localtime:/etc/localtime:ro \
