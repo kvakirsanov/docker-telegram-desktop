@@ -3,6 +3,8 @@
 ## Overview
 This project allows running **Telegram Desktop** inside a Docker container to enhance security and isolation. It helps protect your system from potential threats by isolating the application while maintaining full functionality.
 
+Tested with Telegram 6.0.2
+
 ---
 
 ## Features
@@ -23,8 +25,14 @@ cd docker-telegram-desktop
 ```
 
 ### 2. Build the Docker Image
+amd64 host:
 ```bash
 ./build.sh
+```
+
+arm64 host (buildx):
+```bash
+./buildx.sh
 ```
 
 ### 3. Run Telegram Desktop
