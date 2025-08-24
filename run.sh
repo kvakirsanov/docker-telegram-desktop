@@ -48,6 +48,7 @@ if [[ -f ".telegram_version" ]]; then
 
     # Run the Docker container with Telegram
     docker run --rm --platform linux/amd64 -it --name "$container_name" \
+        --network=host \
         --user "$UID:1000" \
         -e DISPLAY="unix$DISPLAY" \
         -e XDG_OPEN_HOOK_PIPE="$XDG_OPEN_HOOK_PIPE" \
