@@ -1,9 +1,14 @@
 # Telegram Desktop in Docker
 
-## Overview
-This project allows running **Telegram Desktop** inside a Docker container to enhance security and isolation. It helps protect your system from potential threats by isolating the application while maintaining full functionality.
 
-Tested with Telegram 6.0.2
+## Overview
+This project allows running **Telegram Desktop** inside a Docker container to enhance security and isolation.  
+It helps protect your system from potential threats by isolating the application while maintaining full functionality.
+
+Additionally, the project enables running the **latest version** of **Telegram Desktop** on **arm64 hosts** (e.g., Apple Silicon, Raspberry Pi, or ARM-based servers).  
+Since [telegram.org](https://telegram.org) does **not** provide native arm64 builds and Debian/Ubuntu repositories often contain **outdated versions**, this project uses **Docker with amd64 emulation** to seamlessly run the newest releases on arm64 systems.
+
+Tested with Telegram **6.0.2**
 
 ---
 
@@ -13,6 +18,7 @@ Tested with Telegram 6.0.2
 - **Flexibility**: Supports X11/Wayland for GUI display.
 - **Compatibility**: Easy integration with host system for data persistence.
 - **Safe Link Handling**: Includes a hook for secure URL and file handling.
+- **ARM64 Support**: Runs the **latest Telegram Desktop** on **arm64 hosts** via **Docker amd64 emulation**, bypassing outdated Debian/Ubuntu repository versions.
 
 ---
 
